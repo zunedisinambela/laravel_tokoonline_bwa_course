@@ -22,6 +22,7 @@ return new class extends Migration
             $table->integer('provinces_id');
             $table->integer('regencies_id');
             $table->integer('zip_code');
+            $table->string('roles')->default('USER'); // USER (Buyer dan Seller), ADMIN (All Access)
             $table->string('country');
             $table->string('phone_number');
             $table->string('store_name');
