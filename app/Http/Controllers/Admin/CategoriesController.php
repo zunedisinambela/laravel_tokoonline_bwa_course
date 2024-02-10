@@ -92,7 +92,9 @@ class CategoriesController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $item = Category::findOrFail($id);
+
+        return view('pages.admin.category.edit', compact('item'));
     }
 
     /**
@@ -100,7 +102,17 @@ class CategoriesController extends Controller
      */
     public function update(CategoryRequest $request, string $id)
     {
-        //
+        $data = $request->all();
+
+        $data['slug'] = Str::slug($request->name);
+        $data['photo'] = $request->file('photo')->store('assets/category','public');
+
+        $item = Category::findOrFail($id);
+        $image = Storage::disk('local')->delete('public/'. $item->photo);
+        
+        $item->update($data);
+
+        return redirect()->route('categories.index');
     }
 
     /**
