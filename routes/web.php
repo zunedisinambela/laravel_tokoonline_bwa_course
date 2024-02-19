@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardTransactionController;
 use App\Http\Controllers\DashboardSettingController;
 use App\Http\Controllers\DashboardProductController;
 use App\Http\Controllers\Admin\DashboardsController;
+use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CategoryController;
@@ -46,6 +47,7 @@ Route::get('/dashboard/account', [DashboardSettingController::class, 'account'])
 Route::prefix('admin')->group(function() {
     Route::get('/', [DashboardsController::class, 'index'])->name('admin-dashboard');
     Route::resource('/categories', CategoriesController::class);
+    Route::resource('/users', UsersController::class);
 });
 
 Auth::routes();
