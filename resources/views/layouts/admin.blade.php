@@ -28,7 +28,7 @@
                     <a href="{{ route('admin-dashboard') }}" class="list-group-item list-group-item-action">
                         Dashboard
                     </a>
-                    <a href="#" class="list-group-item list-group-item-action">
+                    <a href="{{ route('products.index') }}" class="list-group-item list-group-item-action {{ (request()->is('admin/products*')) ? 'active' : '' }}">
                         Products
                     </a>
                     <a href="{{ route('categories.index') }}" class="list-group-item list-group-item-action {{ (request()->is('admin/categories*')) ? 'active' : ''}}">
